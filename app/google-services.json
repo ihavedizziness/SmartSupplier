@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "970591748886",
+    "project_id": "smartsupplier-485b0",
+    "storage_bucket": "smartsupplier-485b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970591748886:android:a169a625b90bc295454637",
+        "android_client_info": {
+          "package_name": "com.qlmat.android.smartsupplier"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9U-nKvtFvCvofAYp_dybUDC-pcA3ooec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
