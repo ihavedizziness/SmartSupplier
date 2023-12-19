@@ -1,4 +1,4 @@
-package com.qlmat.android.smartsupplier.network.auth.fragment
+package com.qlmat.android.smartsupplier.auth.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import com.qlmat.android.smartsupplier.MainActivity
 import com.qlmat.android.smartsupplier.R
 import com.qlmat.android.smartsupplier.data.state.LoginState
 import com.qlmat.android.smartsupplier.databinding.FragmentLoginBinding
-import com.qlmat.android.smartsupplier.network.auth.AuthManager
-import com.qlmat.android.smartsupplier.network.auth.viewmodel.LoginViewModel
+import com.qlmat.android.smartsupplier.network.AuthManager
+import com.qlmat.android.smartsupplier.auth.viewmodel.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(R.layout.fragment_login) {

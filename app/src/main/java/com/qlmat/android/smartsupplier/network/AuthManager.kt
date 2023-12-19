@@ -1,4 +1,4 @@
-package com.qlmat.android.smartsupplier.network.auth
+package com.qlmat.android.smartsupplier.network
 
 import com.google.firebase.auth.FirebaseAuth
 import com.qlmat.android.smartsupplier.arch.SharedPreferencesRepo

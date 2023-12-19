@@ -16,7 +16,7 @@
         android:theme="@style/Theme.SmartSupplier"
         tools:targetApi="31">
         <activity
-            android:name=".network.auth.AuthActivity"
+            android:name=".auth.AuthActivity"
             android:exported="true">
 
             <intent-filter>

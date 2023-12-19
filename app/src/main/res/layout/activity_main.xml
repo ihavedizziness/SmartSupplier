@@ -5,15 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/mobile_navigation"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/navView" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/selector_nav_bar"
+        app:itemTextColor="@drawable/selector_nav_bar"
+        android:background="@color/white"
+        app:menu="@menu/mobile_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,11 @@
-package com.qlmat.android.smartsupplier.network.auth.viewmodel
+package com.qlmat.android.smartsupplier.auth.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.qlmat.android.smartsupplier.data.state.RegistrationState
-import com.qlmat.android.smartsupplier.network.auth.AuthManager
+import com.qlmat.android.smartsupplier.network.AuthManager
 import kotlinx.coroutines.launch
 
 class RegisterViewModel : ViewModel() {

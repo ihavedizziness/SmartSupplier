@@ -1,4 +1,4 @@
-package com.qlmat.android.smartsupplier.network.auth.fragment
+package com.qlmat.android.smartsupplier.auth.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.qlmat.android.smartsupplier.R
 import com.qlmat.android.smartsupplier.data.state.RegistrationState
 import com.qlmat.android.smartsupplier.databinding.FragmentRegistrationBinding
-import com.qlmat.android.smartsupplier.network.auth.viewmodel.RegisterViewModel
+import com.qlmat.android.smartsupplier.auth.viewmodel.RegisterViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -52,7 +52,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             is RegistrationState.Loading -> {}
             is RegistrationState.Success -> {
                 val user = state.value
-                fragmentManager?.commit {
+                parentFragmentManager   .commit {
                     replace(R.id.container, LoginFragment())
                 }
             }

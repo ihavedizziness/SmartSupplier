@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.qlmat.android.smartsupplier.ui.home.HomeFragment"
+        android:label="HomeFragment"/>
+
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.qlmat.android.smartsupplier.ui.history.OrderHistoryFragment"
+        android:label="OrderHistoryFragment"/>
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.qlmat.android.smartsupplier.auth.fragment.RegistrationFragment"
+        android:label="RegistrationFragment" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.qlmat.android.smartsupplier.auth.fragment.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.qlmat.android.smartsupplier.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"/>
+
+</navigation>
