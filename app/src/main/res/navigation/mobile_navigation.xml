@@ -8,12 +8,20 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.qlmat.android.smartsupplier.ui.home.HomeFragment"
-        android:label="HomeFragment"/>
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.qlmat.android.smartsupplier.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.qlmat.android.smartsupplier.ui.history.OrderHistoryFragment"
-        android:label="OrderHistoryFragment"/>
+        android:label="OrderHistoryFragment"
+        tools:layout="@layout/fragment_order_history" />
 
     <fragment
         android:id="@+id/registrationFragment"
@@ -28,10 +36,5 @@
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
-
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.qlmat.android.smartsupplier.ui.profile.ProfileFragment"
-        android:label="ProfileFragment"/>
 
 </navigation>

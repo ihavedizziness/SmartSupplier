@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#32CD32</color>
     <color name="red">#FB344F</color>
     <color name="app_color">#F29F04</color>
     <color name="sub_color">#999EA1</color>

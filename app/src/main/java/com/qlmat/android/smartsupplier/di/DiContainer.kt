@@ -7,8 +7,12 @@ import com.qlmat.android.smartsupplier.data.repository.UserRepo
 import com.qlmat.android.smartsupplier.network.AuthManager
 import com.qlmat.android.smartsupplier.auth.viewmodel.LoginViewModel
 import com.qlmat.android.smartsupplier.auth.viewmodel.RegisterViewModel
+import com.qlmat.android.smartsupplier.data.repository.OrderRepo
 import com.qlmat.android.smartsupplier.data.repository.ProductRepo
+import com.qlmat.android.smartsupplier.data.repository.WarehouseRepo
 import com.qlmat.android.smartsupplier.ui.home.HomeViewModel
+import com.qlmat.android.smartsupplier.ui.order.OrderViewModel
+import com.qlmat.android.smartsupplier.ui.product.ProductDetailViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -17,17 +21,15 @@ import org.koin.dsl.module
 object DiContainer {
 
     private val databaseModule = module {
-        single { provideFirestore() }
-        factory { UserRepo(get()) }
-        factory { ProductRepo(get()) }
+        single { FirebaseFirestore.getInstance() }
+        single { UserRepo(get()) }
+        single { ProductRepo() }
+        single { OrderRepo() }
+        single { WarehouseRepo() }
     }
 
     private val networkModule = module {
         single { AuthManager }
-    }
-
-    private fun provideFirestore(): FirebaseFirestore {
-        return FirebaseFirestore.getInstance()
     }
 
     private val viewModelModule = module {
@@ -40,6 +42,17 @@ object DiContainer {
         viewModel {
             HomeViewModel(
                 productRepo = get()
+            )
+        }
+        viewModel {
+            ProductDetailViewModel(
+                productRepo = get()
+            )
+        }
+        viewModel{
+            OrderViewModel(
+                orderRepo = get(),
+                warehouseRepo = get()
             )
         }
     }

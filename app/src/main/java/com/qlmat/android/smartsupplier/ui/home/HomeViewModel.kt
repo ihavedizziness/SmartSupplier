@@ -8,7 +8,9 @@ import com.qlmat.android.smartsupplier.data.repository.ProductRepo
 import com.qlmat.android.smartsupplier.data.state.ProductsState
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val productRepo: ProductRepo): ViewModel() {
+class HomeViewModel(
+    private val productRepo: ProductRepo
+) : ViewModel() {
 
     private val _productsStateLiveData = MutableLiveData<ProductsState>()
     val productsLiveData: LiveData<ProductsState> get() = _productsStateLiveData
