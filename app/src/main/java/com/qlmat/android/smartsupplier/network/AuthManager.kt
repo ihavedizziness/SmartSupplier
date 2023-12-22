@@ -2,6 +2,7 @@ package com.qlmat.android.smartsupplier.network
 
 import com.google.firebase.auth.FirebaseAuth
 import com.qlmat.android.smartsupplier.arch.SharedPreferencesRepo
+import com.qlmat.android.smartsupplier.arch.SharedPreferencesRepo.Companion.NO_VALUE
 import com.qlmat.android.smartsupplier.data.model.User
 import com.qlmat.android.smartsupplier.data.repository.UserRepo
 import kotlinx.coroutines.tasks.await
@@ -31,6 +32,7 @@ object AuthManager : KoinComponent {
                     setUserPassword(password)
                 }
                 val user = User(
+                    id = uid,
                     email = email,
                     password = password,
                     phoneNumber = phoneNumber
@@ -49,23 +51,24 @@ object AuthManager : KoinComponent {
     ): Pair<Boolean, String?> {
         return try {
             auth.signInWithEmailAndPassword(email, password).await()
+            val user = userRepository.getUserByEmailAndPassword(email, password)
+            user?.let {
+                with(sharedPreferencesRepository) {
+                    setUserId(it.id)
+                    setUserEmail(it.email)
+                    setUserPhoneNumber(it.phoneNumber)
+                    setUserPassword(it.password)
+                }
+            }
             Pair(true, null)
         } catch (ex: Exception) {
             Pair(false, ex.message)
         }
     }
 
-    fun resetPassword() {
-
-    }
 
     private fun sendEmailVerification() {
         auth.currentUser?.sendEmailVerification()
-    }
-
-    fun checkAuthState(onAuthStateChanged: (Boolean) -> Unit) {
-        val currentUser = auth.currentUser
-        onAuthStateChanged(currentUser != null)
     }
 
     fun logOut() {

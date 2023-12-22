@@ -11,24 +11,24 @@ class SharedPreferencesRepo(context: Context) : SharedPreferencesContract {
 
     private val prefs = context.getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun getUserId(): String? {
-        return prefs.getString(KEY_USER_ID, null)
+    fun getUserId(): String {
+        return prefs.getString(KEY_USER_ID, NO_VALUE) ?: NO_VALUE
     }
 
     fun setUserId(id: String) {
         prefs.edit().putString(KEY_USER_ID, id).apply()
     }
 
-    fun getUserEmail(): String? {
-        return prefs.getString(KEY_USER_EMAIL, null)
+    fun getUserEmail(): String {
+        return prefs.getString(KEY_USER_EMAIL, NO_VALUE) ?: NO_VALUE
     }
 
     fun setUserEmail(email: String) {
         prefs.edit().putString(KEY_USER_EMAIL, email).apply()
     }
 
-    fun getUserPhoneNumber(): String? {
-        return prefs.getString(KEY_USER_PHONE_NUM, null)
+    fun getUserPhoneNumber(): String {
+        return prefs.getString(KEY_USER_PHONE_NUM, NO_VALUE) ?: NO_VALUE
     }
 
     fun setUserPhoneNumber(phoneNumber: String) {
@@ -36,7 +36,7 @@ class SharedPreferencesRepo(context: Context) : SharedPreferencesContract {
     }
 
     fun getUserPassword(): String? {
-        return prefs.getString(KEY_USER_PASS, null)
+        return prefs.getString(KEY_USER_PASS, NO_VALUE) ?: NO_VALUE
     }
 
 
@@ -46,6 +46,10 @@ class SharedPreferencesRepo(context: Context) : SharedPreferencesContract {
 
     fun clearUser() {
         prefs.edit().clear().apply()
+    }
+
+    companion object {
+        const val NO_VALUE = ""
     }
 
 }

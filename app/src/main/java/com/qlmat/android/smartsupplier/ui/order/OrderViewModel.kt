@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.qlmat.android.smartsupplier.data.model.Order
-import com.qlmat.android.smartsupplier.data.model.Warehouse
 import com.qlmat.android.smartsupplier.data.repository.OrderRepo
 import com.qlmat.android.smartsupplier.data.repository.WarehouseRepo
 import com.qlmat.android.smartsupplier.data.state.OrderState
-import com.qlmat.android.smartsupplier.data.state.WarehouseState
+import com.qlmat.android.smartsupplier.data.state.WarehousesState
 import kotlinx.coroutines.launch
 
 class OrderViewModel(
@@ -20,11 +18,12 @@ class OrderViewModel(
     private val _orderStateLiveData = MutableLiveData<OrderState>()
     val orderStateLiveData: LiveData<OrderState> get() = _orderStateLiveData
 
-    private val _warehousesStateLiveData = MutableLiveData<WarehouseState>()
-    val warehousesStateLiveData: LiveData<WarehouseState> get() = _warehousesStateLiveData
+    private val _warehousesStateLiveData = MutableLiveData<WarehousesState>()
+    val warehousesStateLiveData: LiveData<WarehousesState> get() = _warehousesStateLiveData
 
     fun toOrder(
-        productId: String,
+        productName: String,
+        productImage: String,
         quantity: Int,
         deliveryOption: String,
         deliveryDetails: String
@@ -34,7 +33,8 @@ class OrderViewModel(
         viewModelScope.launch {
             try {
                 orderRepo.toOrder(
-                    productId = productId,
+                    productName = productName,
+                    productImage = productImage,
                     quantity = quantity,
                     deliveryOption = deliveryOption,
                     deliveryDetails = deliveryDetails
@@ -47,14 +47,14 @@ class OrderViewModel(
     }
 
     fun getWarehouses() {
-        _warehousesStateLiveData.value = WarehouseState.Loading
+        _warehousesStateLiveData.value = WarehousesState.Loading
 
         viewModelScope.launch {
             try {
                 val warehouses = warehouseRepo.getWarehouses()
-                _warehousesStateLiveData.value = WarehouseState.Success(warehouses)
+                _warehousesStateLiveData.value = WarehousesState.Success(warehouses)
             } catch (ex: Exception) {
-                _warehousesStateLiveData.value = WarehouseState.Failed("Failed to fetch warehouses")
+                _warehousesStateLiveData.value = WarehousesState.Failed("Failed to fetch warehouses")
             }
         }
     }

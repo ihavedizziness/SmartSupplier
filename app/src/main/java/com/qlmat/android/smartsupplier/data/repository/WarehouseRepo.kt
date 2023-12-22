@@ -1,5 +1,6 @@
 package com.qlmat.android.smartsupplier.data.repository
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.qlmat.android.smartsupplier.data.model.Warehouse
 import kotlinx.coroutines.tasks.await
@@ -16,6 +17,7 @@ class WarehouseRepo : KoinComponent {
 
         querySnapshot.documents.mapNotNull { document ->
             val data = document.data
+            Log.d("WAREHOUSEREPO", data.toString())
             data?.let {
                 Warehouse(
                     id = document.id,

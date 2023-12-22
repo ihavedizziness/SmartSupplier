@@ -2,16 +2,20 @@ package com.qlmat.android.smartsupplier.data.model
 
 data class Order(
     val userId: String,
-    val productId: String,
+    val productName: String,
+    val productImage: String,
     val quantity: Int,
     val deliveryOption: String,
-    val deliveryDetails: String
+    val deliveryDetails: String,
+    val date: String
 ) {
     fun toMap(): Map<String, Any> = mapOf(
         "userId" to userId,
-        "productId" to productId,
+        "productName" to productName,
+        "productImage" to productImage,
         "quantity" to quantity,
         "deliveryOption" to deliveryOption,
-        "deliveryDetails" to deliveryDetails
+        "deliveryDetails" to deliveryDetails,
+        "date" to date
     )
 }

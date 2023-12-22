@@ -2,6 +2,7 @@ package com.qlmat.android.smartsupplier.auth.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,7 +26,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         initActions()
         initObserver()
-        autoLogin()
     }
 
     private fun initActions() = with(viewBinding) {
@@ -33,7 +33,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            viewModel.login(email, password)
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                viewModel.login(email, password)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter email and password",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         layoutSignUp.setOnClickListener {
@@ -60,12 +68,4 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-    private fun autoLogin() {
-        AuthManager.checkAuthState { isLogged ->
-            if (isLogged) {
-                startActivity(Intent(requireContext(), MainActivity::class.java))
-                activity?.finish()
-            }
-        }
-    }
 }

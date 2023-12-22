@@ -7,200 +7,277 @@
     android:clickable="true"
     android:focusable="true">
 
-    <ImageView
-        android:id="@+id/imageViewOrderBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
-        android:scaleType="center"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewOrderTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/manrope_bold"
-        android:text="Order"
-        android:textColor="@color/app_color"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewOrderBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageViewOrderBack"
-        app:layout_constraintTop_toTopOf="@id/imageViewOrderBack" />
-
-    <TextView
-        android:id="@+id/textViewOrderSubtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/manrope_bold"
-        android:text="Select a delivery option:"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle"
-        app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
-        app:layout_constraintTop_toBottomOf="@id/imageViewOrderBack" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutOptionOrderByAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/bg_item_card"
-        android:elevation="5dp"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewOrderSubtitle"
-        app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
-        app:layout_constraintEnd_toStartOf="@id/layoutOptionPickUpFromWarehouse" >
-
-        <ImageView
-            android:id="@+id/imageViewTruck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_truck"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewOptionOrderByAddress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Order delivery by address"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:fontFamily="@font/manrope_bold"
-            app:layout_constraintTop_toBottomOf="@id/imageViewTruck"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutOptionPickUpFromWarehouse"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:background="@drawable/bg_item_card"
-        android:elevation="5dp"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@id/layoutOptionOrderByAddress"
-        app:layout_constraintStart_toEndOf="@id/layoutOptionOrderByAddress"
-        app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle">
-
-        <ImageView
-            android:id="@+id/imageViewLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_location"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewOptionPickUpFromWarehouse"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Pick up from warehouse"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:fontFamily="@font/manrope_bold"
-            app:layout_constraintTop_toBottomOf="@id/imageViewLocation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="gone"
-        android:id="@+id/layoutOrderByAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutOptionOrderByAddress"
-        app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
-        app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle">
+        tools:visibility="visible"
+        android:id="@+id/layoutOrder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewOrderBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewOrderAddress"
+            android:id="@+id/textViewOrderTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Address"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Order"
             android:textColor="@color/app_color"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewOrderBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewOrderBack"
+            app:layout_constraintTop_toTopOf="@id/imageViewOrderBack" />
+
+        <TextView
+            android:id="@+id/textViewOrderQuantityTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/manrope_bold"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="Select a quantity:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintTop_toBottomOf="@id/imageViewOrderBack" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonQuantityRemove"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="36dp"
+            android:text="-"
+            android:textColor="@color/app_color"
+            android:textSize="32sp"
+            android:fontFamily="@font/manrope_bold"
+            android:background="@drawable/bg_item_card_selected"
+            app:layout_constraintTop_toTopOf="@id/textViewOrderQuantity"
+            app:layout_constraintEnd_toStartOf="@id/textViewOrderQuantity"
+            app:layout_constraintBottom_toBottomOf="@id/textViewOrderQuantity" />
+
+        <TextView
+            android:id="@+id/textViewOrderQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="1"
+            android:textColor="@color/app_color"
+            android:textSize="32sp"
+            android:fontFamily="@font/manrope_bold"
+            app:layout_constraintTop_toBottomOf="@id/textViewOrderQuantityTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonQuantityAdd"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="36dp"
+            android:text="+"
+            android:textColor="@color/app_color"
+            android:textSize="32sp"
+            android:fontFamily="@font/manrope_bold"
+            android:background="@drawable/bg_item_card_selected"
+            app:layout_constraintTop_toTopOf="@id/textViewOrderQuantity"
+            app:layout_constraintStart_toEndOf="@id/textViewOrderQuantity"
+            app:layout_constraintBottom_toBottomOf="@id/textViewOrderQuantity" />
+
+        <TextView
+            android:id="@+id/textViewOrderSubtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/TextInputLayoutStyle"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/textViewOrderAddress"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Select a delivery option:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewOrderQuantity" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextOrderAddress"
-                android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutOptionOrderByAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_item_card"
+            android:elevation="5dp"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewOrderSubtitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintEnd_toStartOf="@id/layoutOptionPickUpFromWarehouse" >
+
+            <ImageView
+                android:id="@+id/imageViewTruck"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/hint_color"
+                android:src="@drawable/ic_truck"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewOptionOrderByAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Order delivery by address"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:fontFamily="@font/manrope_bold"
-                android:hint="Please enter delivery address" />
+                app:layout_constraintTop_toBottomOf="@id/imageViewTruck"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutOptionPickUpFromWarehouse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_card"
+            android:elevation="5dp"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="@id/layoutOptionOrderByAddress"
+            app:layout_constraintStart_toEndOf="@id/layoutOptionOrderByAddress"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
-        android:id="@+id/layoutPickUpFromWarehouse"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutOptionOrderByAddress"
-        app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
-        app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle"
-        app:layout_constraintBottom_toTopOf="@id/buttonConfirmOrder">
+            <ImageView
+                android:id="@+id/imageViewLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerProducts"
+            <TextView
+                android:id="@+id/textViewOptionPickUpFromWarehouse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Pick up from warehouse"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/manrope_bold"
+                app:layout_constraintTop_toBottomOf="@id/imageViewLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/layoutOrderByAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutOptionOrderByAddress"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle">
+
+            <TextView
+                android:id="@+id/textViewOrderAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/app_color"
+                android:textSize="18sp"
+                android:fontFamily="@font/manrope_bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TextInputLayoutStyle"
+                android:layout_marginTop="4dp"
+                app:hintEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/textViewOrderAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextOrderAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/hint_color"
+                    android:fontFamily="@font/manrope_bold"
+                    android:hint="Please enter delivery address" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/layoutPickUpFromWarehouse"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_warehouse"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutOptionOrderByAddress"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle"
+            app:layout_constraintBottom_toTopOf="@id/buttonConfirmOrder">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerWarehouses"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_warehouse"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonConfirmOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_order_button"
+            android:text="Confirm Order"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/manrope_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
+            app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonConfirmOrder"
-        android:layout_width="0dp"
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBarOrder"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_order_button"
-        android:text="Confirm Order"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:fontFamily="@font/manrope_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/imageViewOrderBack"
-        app:layout_constraintEnd_toEndOf="@id/textViewOrderTitle" />
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/app_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

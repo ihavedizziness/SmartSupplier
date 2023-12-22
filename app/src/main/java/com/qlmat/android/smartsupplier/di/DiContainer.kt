@@ -10,6 +10,8 @@ import com.qlmat.android.smartsupplier.auth.viewmodel.RegisterViewModel
 import com.qlmat.android.smartsupplier.data.repository.OrderRepo
 import com.qlmat.android.smartsupplier.data.repository.ProductRepo
 import com.qlmat.android.smartsupplier.data.repository.WarehouseRepo
+import com.qlmat.android.smartsupplier.ui.compare.CompareViewModel
+import com.qlmat.android.smartsupplier.ui.history.OrderHistoryViewModel
 import com.qlmat.android.smartsupplier.ui.home.HomeViewModel
 import com.qlmat.android.smartsupplier.ui.order.OrderViewModel
 import com.qlmat.android.smartsupplier.ui.product.ProductDetailViewModel
@@ -22,10 +24,10 @@ object DiContainer {
 
     private val databaseModule = module {
         single { FirebaseFirestore.getInstance() }
-        single { UserRepo(get()) }
-        single { ProductRepo() }
-        single { OrderRepo() }
-        single { WarehouseRepo() }
+        factory { UserRepo(get()) }
+        factory { ProductRepo() }
+        factory { OrderRepo() }
+        factory { WarehouseRepo() }
     }
 
     private val networkModule = module {
@@ -49,10 +51,20 @@ object DiContainer {
                 productRepo = get()
             )
         }
-        viewModel{
+        viewModel {
             OrderViewModel(
                 orderRepo = get(),
                 warehouseRepo = get()
+            )
+        }
+        viewModel {
+            OrderHistoryViewModel(
+                orderRepo = get()
+            )
+        }
+        viewModel {
+            CompareViewModel(
+                productRepo = get()
             )
         }
     }

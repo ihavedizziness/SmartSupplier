@@ -2,16 +2,16 @@ package com.qlmat.android.smartsupplier.data.state
 
 import com.qlmat.android.smartsupplier.data.model.Warehouse
 
-sealed class WarehouseState {
+sealed class WarehousesState {
 
-    data object Loading: WarehouseState()
+    data object Loading: WarehousesState()
 
     data class Failed(
         val message: String
-    ): WarehouseState()
+    ): WarehousesState()
 
     data class Success(
         val value: List<Warehouse>
-    ): WarehouseState()
+    ): WarehousesState()
 
 }

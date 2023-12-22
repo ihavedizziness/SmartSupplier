@@ -9,22 +9,61 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.qlmat.android.smartsupplier.R
+import com.qlmat.android.smartsupplier.arch.Constants.PRODUCT_ID
+import com.qlmat.android.smartsupplier.arch.Constants.PRODUCT_NAME
+import com.qlmat.android.smartsupplier.arch.Constants.PRODUCT_IMAGE
+import com.qlmat.android.smartsupplier.data.model.Product
 import com.qlmat.android.smartsupplier.data.state.ProductState
 import com.qlmat.android.smartsupplier.databinding.FragmentProductDetailBinding
-import com.qlmat.android.smartsupplier.ui.home.HomeFragment.Companion.PRODUCT_ID
+import com.qlmat.android.smartsupplier.ui.compare.CompareFragment
+import com.qlmat.android.smartsupplier.ui.order.OrderFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
 
     private val viewBinding: FragmentProductDetailBinding by viewBinding()
     private val viewModel: ProductDetailViewModel by viewModel()
+    private lateinit var productRef: Product
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initObserver()
+        initActions()
 
         arguments?.getString(PRODUCT_ID)?.let { viewModel.getProduct(it) }
+    }
+
+    private fun initActions() = with(viewBinding) {
+        imageViewProductDetailBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        buttonOrderProductDetail.setOnClickListener {
+            val orderFragment = OrderFragment()
+            orderFragment.arguments = Bundle().apply {
+                putString(PRODUCT_ID, arguments?.getString(PRODUCT_ID))
+                putString(PRODUCT_NAME, productRef.name)
+                putString(PRODUCT_IMAGE, productRef.image)
+            }
+
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.containerView, orderFragment)
+                .addToBackStack("Order")
+                .commit()
+        }
+
+        buttonCompareProductDetail.setOnClickListener {
+            val compareFragment = CompareFragment()
+            compareFragment.arguments = Bundle().apply {
+                putString(PRODUCT_ID, arguments?.getString(PRODUCT_ID))
+            }
+
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.containerView, compareFragment)
+                .addToBackStack("Compare")
+                .commit()
+        }
     }
 
     private fun initObserver() {
@@ -34,13 +73,17 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
     private fun handleProductState(productState: ProductState) = with(viewBinding) {
         when (productState) {
             is ProductState.Failed -> {
+                progressBarProductDetail.visibility = View.GONE
+                layoutProductDetail.visibility = View.VISIBLE
                 Toast.makeText(requireContext(), productState.message, Toast.LENGTH_LONG).show()
             }
             is ProductState.Loading -> {
-
+                progressBarProductDetail.visibility = View.VISIBLE
             }
             is ProductState.Success -> {
+                progressBarProductDetail.visibility = View.GONE
                 val product = productState.value
+                productRef = product
 
                 Glide.with(requireContext())
                     .load(product.image)
@@ -66,6 +109,7 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
                     )
                 }
 
+                layoutProductDetail.visibility = View.VISIBLE
             }
         }
     }

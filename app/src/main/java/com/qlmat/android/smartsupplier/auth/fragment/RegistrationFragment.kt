@@ -30,7 +30,15 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             val phoneNumber = editTextPhoneNumber.text.toString()
             val password = editTextPassword.text.toString()
 
-            viewModel.register(email, phoneNumber, password)
+            if (email.isNotEmpty() && phoneNumber.isNotEmpty() && password.isNotEmpty()) {
+                viewModel.register(email, phoneNumber, password)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill in all fields",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         layoutSignUp.setOnClickListener {
@@ -52,7 +60,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             is RegistrationState.Loading -> {}
             is RegistrationState.Success -> {
                 val user = state.value
-                parentFragmentManager   .commit {
+                Toast.makeText(requireContext(), "Succesful Registration", Toast.LENGTH_SHORT).show()
+                requireActivity().supportFragmentManager.commit {
                     replace(R.id.container, LoginFragment())
                 }
             }

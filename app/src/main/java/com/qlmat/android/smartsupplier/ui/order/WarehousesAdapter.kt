@@ -1,12 +1,17 @@
 package com.qlmat.android.smartsupplier.ui.order
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.qlmat.android.smartsupplier.R
 import com.qlmat.android.smartsupplier.data.model.Warehouse
 import com.qlmat.android.smartsupplier.databinding.ItemWarehouseBinding
 
-class WarehousesAdapter : RecyclerView.Adapter<WarehousesAdapter.WarehousesViewHolder>() {
+class WarehousesAdapter(
+    private val resources: Resources
+) : RecyclerView.Adapter<WarehousesAdapter.WarehousesViewHolder>() {
 
     private var warehouses = listOf<Warehouse>()
     private var listener: OnWarehouseClickListener? = null
@@ -49,7 +54,20 @@ class WarehousesAdapter : RecyclerView.Adapter<WarehousesAdapter.WarehousesViewH
             textViewWarehouseName.text = warehouse.name
             textViewWarehouseAddress.text = warehouse.address
 
+            if (warehouse.isSelected) {
+                itemView.background = ResourcesCompat.getDrawable(resources, R.drawable.bg_item_card_selected, itemView.context.theme)
+            } else {
+                itemView.background = ResourcesCompat.getDrawable(resources, R.drawable.bg_item_card, itemView.context.theme)
+            }
+
             itemView.setOnClickListener {
+                warehouses.forEach {
+                    it.isSelected = false
+                    if (it.id == warehouse.id) {
+                        it.isSelected = true
+                    }
+                }
+                notifyDataSetChanged()
                 listener?.onClick(warehouse)
             }
         }

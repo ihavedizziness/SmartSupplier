@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/layoutCompare"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewCompareBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewCompareTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Peer Comparison"
+            android:textColor="@color/app_color"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewCompareBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toTopOf="@id/imageViewCompareBack" />
+
+        <TextView
+            android:id="@+id/textViewCompareMetricsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Metrics:"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/imageViewCompareBack" />
+
+        <TextView
+            android:id="@+id/textViewCompareCostBenefitTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Cost-Benefit 📊:"
+            android:textColor="@color/app_color"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewCompareMetricsTitle" />
+
+        <TextView
+            android:id="@+id/textViewCompareCostBenefit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            tools:text="80%"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toEndOf="@id/textViewCompareCostBenefitTitle"
+            app:layout_constraintTop_toTopOf="@id/textViewCompareCostBenefitTitle" />
+
+        <TextView
+            android:id="@+id/textViewCompareCostBenefitSubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="The cost-benefit percentage represents how much more or less expensive the selected product is compared to the average price of similar products."
+            android:textColor="@color/sub_color"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewCompareCostBenefitTitle" />
+
+        <TextView
+            android:id="@+id/textViewCompareRatingAbilityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="Rating-Ability 📈:"
+            android:textColor="@color/app_color"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewCompareCostBenefitSubTitle" />
+
+        <TextView
+            android:id="@+id/textViewCompareRatingAbility"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            tools:text="92%"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toEndOf="@id/textViewCompareRatingAbilityTitle"
+            app:layout_constraintTop_toTopOf="@id/textViewCompareRatingAbilityTitle" />
+
+        <TextView
+            android:id="@+id/textViewCompareRatingAbilitySubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/manrope_bold"
+            android:text="The rating-ability percentage indicates how much higher or lower the rating of the selected product is compared to the average rating of similar products."
+            android:textColor="@color/sub_color"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewCompareRatingAbilityTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSimilarProducts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_product"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/textViewCompareTitle"
+            app:layout_constraintStart_toStartOf="@id/imageViewCompareBack"
+            app:layout_constraintTop_toBottomOf="@id/textViewCompareRatingAbilitySubTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBarCompare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/app_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,13 +12,29 @@ class UserRepo(firestore: FirebaseFirestore) {
         usersCollection.document(userId).set(user).await()
     }
 
-    suspend fun getUser(userId: String): User? {
+    suspend fun getUserByEmailAndPassword(email: String, password: String): User? {
         return try {
-            val documentSnapshot = usersCollection.document(userId).get().await()
-            documentSnapshot.toObject(User::class.java)
+            val querySnapshot = usersCollection
+                .whereEqualTo("email", email)
+                .whereEqualTo("password", password)
+                .get()
+                .await()
+
+            if (!querySnapshot.isEmpty) {
+                val document = querySnapshot.documents[0]
+                User(
+                    id = document.id,
+                    email = document["email"] as? String ?: "",
+                    phoneNumber = document["phoneNumber"] as? String ?: "",
+                    password = document["password"] as? String ?: ""
+                )
+            } else {
+                null
+            }
         } catch (ex: Exception) {
             null
         }
     }
+
 
 }

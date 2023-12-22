@@ -57,4 +57,13 @@ class ProductRepo : KoinComponent {
         }
     }
 
+    suspend fun getSimilarProducts(productId: String): List<Product> {
+        val selectedProduct = getProductById(productId)
+
+        return selectedProduct?.let { selected ->
+            getProducts()
+                .filter { it.id != productId && it.category == selected.category }
+        } ?: emptyList()
+    }
+
 }
